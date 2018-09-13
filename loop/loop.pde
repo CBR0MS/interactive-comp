@@ -12,6 +12,9 @@ int     nFramesInLoop = 260;
 int     nElapsedFrames;
 boolean bRecording; 
 
+PGraphics offscreenImg;
+float myScale = 0.01;
+float radius = 100.0;
 
 
 //===================================================
@@ -20,6 +23,7 @@ void setup() {
   bRecording = false;
   nElapsedFrames = 0;
   frameRate(40);
+  makeOffscreenImg(); 
 }
 //===================================================
 void keyPressed() {
@@ -155,23 +159,34 @@ void renderMyDesign (float percent) {
 }
 
 void renderBall(float percent, int roundedPercent) {
+  
+  int currStep = frameCount%nFramesInLoop;
+  float t = map(currStep, 0, nFramesInLoop, 0, TWO_PI); 
+  float px = width/2.0 + radius * cos(t); 
+  float py = width/2.0 + radius * sin(t);
+  
+   float noiseAtLoc = height - 100.0 * noise(myScale*px, myScale*py);
+   float noiseAdjusted = map(noiseAtLoc, 570, 620, -15, 15);
+   float xDrift = noiseAdjusted;
+   float yDrift = noiseAdjusted;
+   
 
     if (roundedPercent <= 25){
     // ball moves towards bottom, larger
     float x = lerp(width/2, width/2 + 100, map(percent, 0, 0.25, 0, 1));
     float y = lerp(height/2, height - 200, map(percent, 0, 0.25, 0, 1));
     float scale = lerp(5, 75, map(percent, 0, 0.25, 0, 1));
-    translate(x, y, 400);
-    fill(map(scale, 75, 5, 255,50));
+    translate(x + xDrift, y + yDrift, 400);
+    fill(map(scale, 85, 5, 255,50));
     sphere(scale);
     
-  } else if (roundedPercent > 20 && roundedPercent <= 55) {
+  } else if (roundedPercent > 25 && roundedPercent <= 55) {
     // ball moves towards center, smaller
-    float x = lerp(width/2 + 100, width/2, map(percent, 0.2, 0.55, 0, 1));
-    float y = lerp(height - 200, height/2, map(percent, 0.2, 0.55, 0, 1));
-    float scale = lerp(75, 2, map(percent, 0.2, 0.55, 0, 1));
-    translate(x, y, 400);
-    fill(map(scale, 75, 5, 255, 50));
+    float x = lerp(width/2 + 100, width/2, map(percent, 0.25, 0.55, 0, 1));
+    float y = lerp(height - 200, height/2, map(percent, 0.25, 0.55, 0, 1));
+    float scale = lerp(75, 2, map(percent, 0.25, 0.55, 0, 1));
+    translate(x + xDrift, y + yDrift, 400);
+    fill(map(scale, 85, 5, 255, 50));
     sphere(scale);
     
   } else if (roundedPercent > 55 && roundedPercent <= 60) {
@@ -179,7 +194,7 @@ void renderBall(float percent, int roundedPercent) {
     float x = lerp(width/2, 15, map(percent, 0.55, 0.6, 0, 1));
     float y = lerp(height/2, height/2, map(percent, 0.55, 0.6, 0, 1));
     float scale = lerp(5, 25, map(percent, 0.55, 0.6, 0, 1));
-    translate(x, y, 400);
+    translate(x + xDrift, y + yDrift, 400);
     fill(map(scale, 75, 5, 255, 50));
     sphere(scale);
   } else if (roundedPercent > 60 && roundedPercent <= 66) {
@@ -187,7 +202,7 @@ void renderBall(float percent, int roundedPercent) {
     float x = lerp(15, width/4, map(percent, 0.6, 0.66, 0, 1));
     float y = lerp(height/2, height/3 * 2, map(percent, 0.6, 0.66, 0, 1));
     //float scale = lerp(5, 25, map(percent, 0.6, 0.6, 0.66, 1));
-    translate(x, y, 400);
+    translate(x + xDrift, y + yDrift, 400);
     fill(map(25, 75, 5, 255, 50));
     sphere(25);
     
@@ -195,23 +210,22 @@ void renderBall(float percent, int roundedPercent) {
     
     float x = lerp(width/4, width/2, map(percent, 0.6, 0.85, 0, 1));
     float y = lerp(height/3 * 2, height/2,  map(percent, 0.6, 0.85, 0, 1));
-    float easedx = function_DoubleExponentialSigmoid(map(x, width/4, width/2, 0, 1), 0.7);
-    float easedy = function_DoubleExponentialSigmoid(map(y, height/3 * 2, height/2, 0, 1), 0.7);
+    float easedx = function_DoubleExponentialSigmoid(map(x, width/4, width/2, 0, 1), 0.8);
+    float easedy = function_DoubleExponentialSigmoid(map(y, height/3 * 2, height/2, 0, 1), 0.8);
     float scale = lerp(25, 15, map(percent, 0.66, 0.85, 0, 1));
-    translate(map(easedx, 0, 1, width/4, width/2), map(easedy, 0, 1, height/3 * 2, height/2), 400);
+    translate(map(easedx, 0, 1, width/4, width/2) + xDrift,
+              map(easedy, 0, 1, height/3 * 2, height/2) + yDrift, 400);
     fill(map(scale, 75, 5, 255, 50));
     sphere(scale);
     
   } else if (roundedPercent > 85 && roundedPercent <= 100) {
     // ball gets larger 
     float scale = lerp(15, 5, map(percent, 0.85, 1, 0, 1));
-    translate(width/2, height/2, 400);
+    translate(width/2 + xDrift, height/2 + yDrift, 400);
     fill(map(scale, 75, 5, 255, 50));
     sphere(scale);
   }
 }
-
-
 
 //===================================================
 // Taken from https://github.com/golanlevin/Pattern_Master
@@ -230,4 +244,16 @@ float function_DoubleExponentialSigmoid (float x, float a) {
     y = 1.0 - (pow(2.0*(1.0-x), 1.0/a))/2.0;
   }
   return y;
+}
+
+void makeOffscreenImg() {
+  offscreenImg = createGraphics(width, width);
+  offscreenImg.beginDraw();
+  for (int x = 0; x<width; x++) {
+    for (int y = 0; y<width; y++) {
+      offscreenImg.stroke(255.0*noise(myScale*x, myScale*y));
+      offscreenImg.point(x, y);
+    }
+  }
+  offscreenImg.endDraw();
 }
