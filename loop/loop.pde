@@ -1,31 +1,21 @@
-// This is a template for creating a looping animation in Processing/Java. 
-// When you press the 'F' key, this program will export a series of images
-// into a "frames" directory located in its sketch folder. 
-// These can then be combined into an animated gif. 
-// Known to work with Processing 3.3.6
+// looping template by
 // Prof. Golan Levin, January 2018
 
-//===================================================
 // Global variables. 
 String  myNickname = "nickname"; 
 int     nFramesInLoop = 260;
 int     nElapsedFrames;
 boolean bRecording; 
-
-PGraphics offscreenImg;
 float myScale = 0.01;
 float radius = 100.0;
 
-
-//===================================================
 void setup() {
   size (640, 640, P3D); 
   bRecording = false;
   nElapsedFrames = 0;
   frameRate(40);
-  makeOffscreenImg(); 
 }
-//===================================================
+
 void keyPressed() {
   if ((key == 'f') || (key == 'F')) {
     bRecording = true;
@@ -33,10 +23,8 @@ void keyPressed() {
   }
 }
 
-//===================================================
 void draw() {
   
- 
   // Compute a percentage (0...1) representing where we are in the loop.
   float percentCompleteFraction = 0; 
   if (bRecording) {
@@ -58,17 +46,20 @@ void draw() {
   }
 }
 
-//===================================================
 void renderMyDesign (float percent) {
 
   smooth(); 
+  // create a rounded percent for easy positioning within the loop
   int roundedPercent = round(percent * 100);
+  
   pushMatrix();
+  
   if (roundedPercent >= 0 && roundedPercent <= 33){
+    
       background(201, 197, 209);
       noStroke();
+      // triangles moving in from edges to center
       float eased = function_DoubleExponentialSigmoid(map(percent, 0, 0.34, 0, 1), 0.8);
-      
       fill(112, 88, 124);
       triangle(0, height, width, height, width/2, map(eased, 0, 1, height, height/2 ));
       fill( 57, 43, 88);
@@ -77,94 +68,93 @@ void renderMyDesign (float percent) {
       triangle(0, 0, width, 0, width/2, height/2 * map(eased, 0, 1, 0, 1));
       fill(108, 150, 157);
       triangle(width, 0, width, height, map(eased, 0, 1, width, width/2), height/2); 
-      
+      // rectangle in center shrinking
       float rectWidth = map(eased, 0, 1, width, 0);
       float rectHeight = map(eased, 0,1, height, 0);
       fill(219, 216, 224);
       rect((width- rectWidth)/2, (height - rectHeight)/2, rectWidth, rectHeight);
 
-  } else if (roundedPercent > 33 && roundedPercent <= 66){
-  pushMatrix();
-  translate(width/2, height/2, 0);
-  ortho(-width/2, width/2, -height/2, height/2);
-
-  float eased = function_DoubleExponentialSigmoid(map(percent, 0.33, 0.67, 0, 1), 0.9); 
-  rotateX(PI/map(eased, 0, 1, 1200, 2)); 
-  rotateZ(PI/map(eased, 0, 1, 1200, 2));
-  background(201, 197, 209);
+  } else if (roundedPercent > 33 && roundedPercent <= 66) {
+    
+    pushMatrix();
+    translate(width/2, height/2, 0);
+    ortho(-width/2, width/2, -height/2, height/2);
   
-  fill(45, 3, 32);
-  beginShape();
-  scale(map(percent, 0.33, 0.66, 3.6, 1.8), map(percent, 0.33, 0.66, 3.6, 1.8), map(percent, 0.33, 0.66, 3.6, 1.8));
-  vertex(-100, -100, -100);
-  vertex( 100, -100, -100);
-  vertex(   0,    0,  100);
-  endShape();
-  fill(108, 150, 157);
-  beginShape();
-  vertex( 100, -100, -100);
-  vertex( 100,  100, -100);
-  vertex(   0,    0,  100);
-  endShape();
-  fill(112, 88, 124);
-  beginShape();
-  vertex( 100, 100, -100);
-  vertex(-100, 100, -100);
-  vertex(   0,   0,  100);
-  endShape();
-  fill( 57, 43, 88);
-  beginShape();
-  vertex(-100,  100, -100);
-  vertex(-100, -100, -100);
-  vertex(   0,    0,  100);
-  endShape();
-  popMatrix();
+    float eased = function_DoubleExponentialSigmoid(map(percent, 0.33, 0.67, 0, 1), 0.9); 
+    // Move from above to side, rotate 45 deg as well
+    rotateX(PI/map(eased, 0, 1, 1200, 2)); 
+    rotateZ(PI/map(eased, 0, 1, 1200, 2));
+    background(201, 197, 209);
+    // 3D Triangle 
+    fill(45, 3, 32);
+    beginShape();
+    scale(map(percent, 0.33, 0.66, 3.6, 1.8), map(percent, 0.33, 0.66, 3.6, 1.8), map(percent, 0.33, 0.66, 3.6, 1.8));
+    vertex(-100, -100, -100);
+    vertex( 100, -100, -100);
+    vertex(   0,    0,  100);
+    endShape();
+    fill(108, 150, 157);
+    beginShape();
+    vertex( 100, -100, -100);
+    vertex( 100,  100, -100);
+    vertex(   0,    0,  100);
+    endShape();
+    fill(112, 88, 124);
+    beginShape();
+    vertex( 100, 100, -100);
+    vertex(-100, 100, -100);
+    vertex(   0,   0,  100);
+    endShape();
+    fill( 57, 43, 88);
+    beginShape();
+    vertex(-100,  100, -100);
+    vertex(-100, -100, -100);
+    vertex(   0,    0,  100);
+    endShape();
+    popMatrix();
   
 } else if (roundedPercent > 66) {
   
- // translate(width/2, height/2, 0);
- // ortho(-width/2, width/2, -height/2, height/2);
-  
-  float eased = function_DoubleExponentialSigmoid(map(percent, 0.66, 1, 0, 1), 0.9);
-  color start = color(108, 150, 157);
-  color end = color(102, 71, 92);
-  color lerpedCol = lerpColor(start, end, eased);
-  
-  if (roundedPercent < 83){
-    background(201, 197, 209);
-    //rotateX(PI/2); 
-   // rotateZ(PI/2);
-   fill(lerpedCol);
-   translate(0,0);
-   triangle(map(eased, 0, 1, 140, -140), map(eased, 0, 1, 500, 700), 
-            map(eased, 0, 1, 500, 700), map(eased, 0, 1, 500, 700), 
-            map(eased, 0, 1, 320, 320), map(eased, 0, 1, 140, -140));
-   
-
+    float eased = function_DoubleExponentialSigmoid(map(percent, 0.66, 1, 0, 1), 0.9);
+    // transition from pale blue to dark purple
+    color start = color(108, 150, 157);
+    color end = color(102, 71, 92);
+    color lerpedCol = lerpColor(start, end, eased);
+    
+    if (roundedPercent < 83){
+      
+     background(201, 197, 209);
+     fill(lerpedCol);
+     translate(0,0);
+     // replace 3D triangle with 2D triangle (nasty specific values)
+     triangle(map(eased, 0, 1, 140, -140), map(eased, 0, 1, 500, 700), 
+              map(eased, 0, 1, 500, 700), map(eased, 0, 1, 500, 700), 
+              map(eased, 0, 1, 320, 320), map(eased, 0, 1, 140, -140));
+    }
+    else {
+      // square move in from center to complete loop
+      float eased2 = function_DoubleExponentialSigmoid(map(percent, 0.82, 1, 0, 1), 0.5);
+      background(lerpedCol);
+      float rectWidth = map(eased2, 0, 1, 0, width);
+      float rectHeight = map(eased2, 0, 1, 0, height);
+      fill(219, 216, 224);
+      rect((width- rectWidth)/2, (height - rectHeight)/2, rectWidth, rectHeight);
+    }
   }
-  else {
-    float eased2 = function_DoubleExponentialSigmoid(map(percent, 0.82, 1, 0, 1), 0.5);
-    background(lerpedCol);
-    float rectWidth = map(eased2, 0, 1, 0, width);
-    float rectHeight = map(eased2, 0, 1, 0, height);
-    fill(219, 216, 224);
-    rect((width- rectWidth)/2, (height - rectHeight)/2, rectWidth, rectHeight);
-  }
-}
   popMatrix();
   pushMatrix();
   renderBall(percent, roundedPercent);
   popMatrix();
-
 }
 
+// weird bouncing ball shenanigans 
 void renderBall(float percent, int roundedPercent) {
   
-  int currStep = frameCount%nFramesInLoop;
-  float t = map(currStep, 0, nFramesInLoop, 0, TWO_PI); 
-  float px = width/2.0 + radius * cos(t); 
-  float py = width/2.0 + radius * sin(t);
-  
+  // make nose map that gives ball a little random sway 
+   int currStep = frameCount % nFramesInLoop;
+   float t = map(currStep, 0, nFramesInLoop, 0, TWO_PI); 
+   float px = width/2.0 + radius * cos(t); 
+   float py = width/2.0 + radius * sin(t);
    float noiseAtLoc = height - 100.0 * noise(myScale*px, myScale*py);
    float noiseAdjusted = map(noiseAtLoc, 570, 620, -15, 15);
    float xDrift = noiseAdjusted;
@@ -197,6 +187,7 @@ void renderBall(float percent, int roundedPercent) {
     translate(x + xDrift, y + yDrift, 400);
     fill(map(scale, 75, 5, 255, 50));
     sphere(scale);
+    
   } else if (roundedPercent > 60 && roundedPercent <= 66) {
     // ball goes right 
     float x = lerp(15, width/4, map(percent, 0.6, 0.66, 0, 1));
@@ -207,7 +198,7 @@ void renderBall(float percent, int roundedPercent) {
     sphere(25);
     
   } else if (roundedPercent > 66 && roundedPercent <= 85) {
-    
+    // ball gets smaller, towards center
     float x = lerp(width/4, width/2, map(percent, 0.6, 0.85, 0, 1));
     float y = lerp(height/3 * 2, height/2,  map(percent, 0.6, 0.85, 0, 1));
     float easedx = function_DoubleExponentialSigmoid(map(x, width/4, width/2, 0, 1), 0.8);
@@ -227,8 +218,7 @@ void renderBall(float percent, int roundedPercent) {
   }
 }
 
-//===================================================
-// Taken from https://github.com/golanlevin/Pattern_Master
+// https://github.com/golanlevin/Pattern_Master
 float function_DoubleExponentialSigmoid (float x, float a) {
   // functionName = "Double-Exponential Sigmoid";
 
@@ -244,16 +234,4 @@ float function_DoubleExponentialSigmoid (float x, float a) {
     y = 1.0 - (pow(2.0*(1.0-x), 1.0/a))/2.0;
   }
   return y;
-}
-
-void makeOffscreenImg() {
-  offscreenImg = createGraphics(width, width);
-  offscreenImg.beginDraw();
-  for (int x = 0; x<width; x++) {
-    for (int y = 0; y<width; y++) {
-      offscreenImg.stroke(255.0*noise(myScale*x, myScale*y));
-      offscreenImg.point(x, y);
-    }
-  }
-  offscreenImg.endDraw();
 }

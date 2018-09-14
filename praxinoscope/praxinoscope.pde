@@ -226,12 +226,12 @@ void drawArtFrame (int whichFrame) {
     triangle(0, 0, width, 0, width/2, height/2 * map(eased, 0, 1, 0, 1));
     fill(200);
     triangle(width, 0, width, height, map(eased, 0, 1, width, width/2), height/2); 
-    noStroke();
+  /*  noStroke();
     float rectWidth = map(eased, 0, 1, width, 0);
     float rectHeight = map(eased, 0,1, height, 0);
-    fill(50);
+    fill(map(rectWidth, 0, width, 50, 200));
     rect((width- rectWidth)/2, (height - rectHeight)/2, rectWidth, rectHeight);
-    stroke(1);
+    stroke(1);*/
   } else {
     // open slowly
     float eased = function_DoubleExponentialSigmoid(map(whichFrame, nFrames/2, nFrames, 0, 1), 0.05);
@@ -243,12 +243,12 @@ void drawArtFrame (int whichFrame) {
     triangle(0, 0, width, 0, width/2, height/2 * map(eased, 0, 1, 1, 0));
     fill(200);
     triangle(width, 0, width, height, map(eased, 0, 1, width/2, width), height/2); 
-    noStroke();
-    float rectWidth = map(eased, 0, 1, 0, width);
+
+    /*float rectWidth = map(eased, 0, 1, 0, width);
     float rectHeight = map(eased, 0,1, 0, height);
-    fill(50);
+    fill(map(rectWidth, 0, width, 50, 200));
     rect((width- rectWidth)/2, (height - rectHeight)/2, rectWidth, rectHeight);
-    stroke(1);
+    stroke(1);*/
   }
  
   
