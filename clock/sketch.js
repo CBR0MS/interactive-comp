@@ -1,9 +1,10 @@
 class Path {
-  constructor(radius, speed) {
+  constructor(radius, x, y) {
     this.radius = radius;
-    this.speed = speed;
-    this.x = 0;
-    this.y = 0;
+    this.x = x;
+    this.y = y;
+    this.loopTime = 0;
+    this.currentTime = 0;
   }
   set xpos(pos) {
     this.x = pos;
@@ -11,14 +12,20 @@ class Path {
   set ypos(pos) {
     this.y = pos;
   }
+  set totalTime(t) {
+    this.loopTime = t;
+  }
+  set curTime(t) {
+    this.currentTime = t;
+  }
   get px() {
-    let currStep = frameCount % nFramesInLoop;
-    let t = map(currStep, 0, nFramesInLoop, 0, PI * 2); 
+    let currStep = this.currentTime % this.loopTime;
+    let t = map(currStep, 0, this.loopTime, 0, PI * 2); 
     return this.x + this.radius * cos(t); 
   }
   get py() {
-    let currStep = frameCount % nFramesInLoop;
-    let t = map(currStep, 0, nFramesInLoop, 0, PI * 2); 
+    let currStep = this.currentTime % this.loopTime;
+    let t = map(currStep, 0, this.loopTime, 0, PI * 2); 
     return this.y + this.radius * sin(t); 
   }
 }
@@ -29,7 +36,7 @@ class Blob {
     this.centerX = centerX;
     this.centerY = centerY;
     this.radius = radius;
-    this.nodes = nodes;
+    this.nodes = nodes; this.goX = 0; this.goY = 0;
     // instance vars 
     this.nodeStartX = []; this.nodeStartY = [];
     this.nodeX = []; this.nodeY = [];
@@ -39,6 +46,8 @@ class Blob {
     this.deltaX = 0.0; this.deltaY = 0.0;
     this.springing = 0.0009; this.damping = 0.98;
     this.col = 0; this.spd = 0.02;
+    // path object to be followed by the blob
+    this.path = new Path(500, this.centerX, this.centerY);
     // initialize all arrays with 0
     for (let i = 0; i < this.nodes; i++){
       this.nodeStartX[i] = 0;
@@ -74,15 +83,16 @@ class Blob {
   }
 
   moveShape() {
+   
     //move center point
-    this.deltaX = mouseX-this.centerX;
-    this.deltaY = mouseY-this.centerY;
+    this.deltaX = this.path.px-this.centerX;
+    this.deltaY = this.path.py-this.centerY;
     // create springing effect
     this.deltaX *= this.springing;
     this.deltaY *= this.springing;
     this.accelX += this.deltaX;
     this.accelY += this.deltaY;
-    // move predator's center
+    // move blob center
     this.centerX += this.accelX * this.spd;
     this.centerY += this.accelY * this.spd;
     // slow down springing
@@ -90,7 +100,7 @@ class Blob {
     this.accelY *= this.damping;
     // change curve tightness
     this.organicConstant = 1-((abs(this.accelX)+abs(this.accelY))*0.1);
-    //move nodes
+    // move nodes
     for (let i = 0; i < this.nodes; i++){
       this.nodeX[i] = this.nodeStartX[i]+sin(radians(this.angle[i]))*(this.accelX);
       this.nodeY[i] =this. nodeStartY[i]+sin(radians(this.angle[i]))*(this.accelY);
@@ -109,25 +119,34 @@ class Blob {
   set dampen(dampen) {
     this.dampening = dampen;
   }
+  set rotationFrequency(freq) {
+    this.path.totalTime = freq;
+  }
+  set currentTimeStep(step) {
+    this.path.curTime = step;
+  }
 }
 
-var b;
+var b, t;
 
 function setup() {
   createCanvas(800, 800);
   noStroke();
   frameRate(30);
-  b = new Blob(width/2, height/2, 45, 30);
+  b = new Blob(height/2, width/2, 45, 30);
+  b.rotationFrequency = 20;
+  b.path.radius = 100;
   b.color = color(255, 255, 255);
-  b.speed = 20;
-  b.spring = 0.00002;
+  b.speed = 2;
+  b.spring = 0.0002;
 }
 
 function draw() {
   //fade background
-
+  let S = second();
+  b.currentTimeStep = S % 20;
   fill(0, 100);
-  rect(0,0,width, height);
+  rect(0,0, width, height);
   b.drawShape();
   b.moveShape();
 }
