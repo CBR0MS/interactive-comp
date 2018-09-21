@@ -21,6 +21,7 @@ function preload() {
 }
 
 function setup() {
+  score = 1;
   createCanvas(600, 750, P2D);
   textFont(font);
   textSize(fSize);
@@ -36,6 +37,7 @@ function setup() {
 }
 
 function draw(){
+  wakeup();
   setAmPmCol();
   fill(fillCol);
   textSize(fSize);
@@ -81,8 +83,12 @@ function draw(){
       let d1 = new Date(2018, 9, 20, gameH, gameM, gameS);
       let d2 = new Date(2018, 9, 20, realH, realM, realS);
       let d = d2.getTime() - d1.getTime()
-      if (realS - gameS > 0) {score = d /1000;}
-      else {score = realS - gameS}
+      // if (realS - gameS > 0) {
+      //   console.log(realS - gameS);
+      //   score = d /1000;
+      // }
+      // else {score = realS - gameS}
+      score = 0;
       time = 0;
       timeFreq = timeFreqInit;
     }
@@ -113,6 +119,22 @@ function updateRealTime() {
   realS = second();
   realM = minute();
   realH = hour() % 12;
+}
+
+function wakeup(){
+  // when leaving the page, animation stops but times goes on
+  // this fixes that!
+  if (score <= -7){
+    setup();
+    // gameS = realS;
+    // gameM = realM;
+    // gameH = realH;
+    // score = 1;
+    for(let i in times){
+       times.pop();
+     }
+  }
+ 
 }
 
 function drawGameTime() {
