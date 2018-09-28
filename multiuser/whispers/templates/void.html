@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Whispers{% endblock%}
+
+{% load static %}
+
+{% block scripts %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="{% static "void.js"%}"></script>
+
+{% load static %}
+
+
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+// new lunicode object
+var luni = new Lunicode();
+// creepify options 
+luni.tools.creepify.options.top = true;     
+luni.tools.creepify.options.middle = true;  
+luni.tools.creepify.options.bottom = true;  
+luni.tools.creepify.options.maxHeight = 15; 
+luni.tools.creepify.options.randomization = 100;
+
+var colored = {{colorIndex}};
+var encoded = [];
+let creep;
+
+// add creepified text to encoded 
+{% for w in whisps %}
+    creep = luni.tools.creepify.encode("{{w.display_text}}");
+    encoded.push({'creep': creep, 'id': "{{ w.intentification_num }}"});
+{% endfor %}
+
+</script>
+
+{% for w in whisps %}
+    <a href="interpretation?whisper={{ w.intentification_num }}">
+        <div class="gibberish-text" id="{{ w.intentification_num }}" style="position: absolute; margin-top: -35vh;"></div>
+    </a>
+{% endfor %}
+
+{% endblock %}

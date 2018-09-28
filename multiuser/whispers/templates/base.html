@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- unifont font load -->
+    <style type="text/css">
+        @font-face {
+            font-family: unifont;
+            src: url('{% static "unifont.ttf" %}') format('truetype');
+        }
+    </style>
+    <!-- javascript and style-->
+    <script src="{% static "lunicode.js" %}"></script>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock content %}
+</body>
+</html>

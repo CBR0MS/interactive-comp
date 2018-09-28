@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Whispers{% endblock%}
+
+{% load static %}
+
+{% block scripts %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="{% static "chain.js" %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="flow" style="margin-top: 40px;">
+    {{ whisp.og_text }}
+</div>
+
+{% for obj in interps %}
+
+<div class="flow">
+    <span class="arrow" style="display: block">↓</span>
+    {{ obj.text }}
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -245,7 +245,7 @@ class Time {
   }
   escaped(){
     if (this.y < height/4) { return true }
-    else {return false}
+    else {rern false}
   }
 
   intersects(deflector) { 
