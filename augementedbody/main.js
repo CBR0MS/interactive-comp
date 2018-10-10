@@ -13,11 +13,43 @@ PoseNet example using p5.js
 
 let poseNet;
 let poses = [];
-let skeleton1_x = [];
-let skeleton1_y = [];
+let skeleton_x = [];
+let skeleton_y = [];
 
 let video;
 var videoIsPlaying; 
+let characters = []
+
+
+class Character(){
+
+  constructor(keypoints){
+    this.key_0 = keypoints[0];
+    this.key_1 = keypoints[1];
+    this.key_2 = keypoints[2];
+    this.key_3 = keypoints[3];
+    this.key_4 = keypoints[4];
+    this.xs = [];
+    this.ys = [];
+    avg()
+    side()
+  }
+  // get average of all face keypoints
+  avg() {
+    this.avg_x = (this.key_0.position.x + this.key_1.position.x + this.key_2.position.x + 
+                  this.key_3.position.x + this.key_4.position.x) / 5
+    this.avg_y = (this.key_0.position.y + this.key_1.position.y + this.key_2.position.y + 
+                  this.key_3.position.y + this.key_4.position.y) / 5
+  }
+
+  // get the side of the scrren that the average ocurs
+  side(){
+    if (this.avg_x < width / 2) {
+      this.side = 'left';
+    }
+    this.side = 'right';
+  }
+}
 
 function setup() {
   videoIsPlaying = false; 
@@ -35,11 +67,18 @@ function setup() {
   });
   // Hide the video element, and just show the canvas
   video.hide();
+
+  // initalize characters array with first poses detected 
+  if (characters.length <= 0) {
+    for (let i = 0; i < poses.length; i++) {
+      characters.push(new Character(poses[i].pose.keypoints));
+    }
+  }
 }
 
-function modelReady() {
-  select('#status').html('Model Loaded');
-}
+// function modelReady() {
+//   select('#status').html('Model Loaded');
+// }
 
 function mousePressed(){
   vidLoad();
@@ -47,27 +86,43 @@ function mousePressed(){
 
 function draw() {
   image(video, 0, 0, width, height);
-  if (poses.length > 1) {
-    let x = poses[0].pose.keypoints[0].position.x
-    let y = poses[0].pose.keypoints[0].position.y
-    let prev_x = skeleton1_x.pop()
-    let prev_y = skeleton1_y.pop()
-    if (Math.abs(prev_x) + 75 < Math.abs(x)) {
-      skeleton1_x.push(prev_x);
-      skeleton1_y.push(prev_y);
-      skeleton1_x.push(poses[1].pose.keypoints[0].position.x)
-      skeleton1_y.push(poses[1].pose.keypoints[0].position.y)
-    } else {
-      skeleton1_x.push(prev_x);
-      skeleton1_y.push(prev_y);
-       skeleton1_x.push(x);
-       skeleton1_y.push(y);
+  // if (poses.length > 1) {
+  //   let x = poses[0].pose.keypoints[0].position.x
+  //   let y = poses[0].pose.keypoints[0].position.y
+  //   let prev_x = skeleton1_x.pop()
+  //   let prev_y = skeleton1_y.pop()
+  //   if (Math.abs(prev_x) + 75 < Math.abs(x)) {
+  //     skeleton1_x.push(prev_x);
+  //     skeleton1_y.push(prev_y);
+  //     skeleton1_x.push(poses[1].pose.keypoints[0].position.x)
+  //     skeleton1_y.push(poses[1].pose.keypoints[0].position.y)
+  //   } else {
+  //     skeleton1_x.push(prev_x);
+  //     skeleton1_y.push(prev_y);
+  //      skeleton1_x.push(x);
+  //      skeleton1_y.push(y);
+  //   }
+  // }
+
+  if (poses.length > characters.length) {
+    // there is a new character not yet instatiated 
+    dist = 2000;
+
+    for (let i = 0; i < poses.length; i++) {
+      for (let j = 0; j < characters.length; j++) {
+        if (poses[i].avg > characters.xs[0])
+      }
     }
+
   }
   
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
  // drawSkeleton();
+}
+
+function distance(x1, y1, x2, y2){
+  return Math.sqrt(Math.pow(x1 - x2, 2) + pow(y1 - y2 , 2));
 }
 // poses[0].pose.keypoints['nose']
 // A function to draw ellipses over the detected keypoints
@@ -81,7 +136,7 @@ function drawKeypoints()  {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
     
-      if ((j == 3 || j == 4) && keypoint.score > 0.7) { // left or right ear
+      if ((j == 3 || j == 4) && keypoint.score > 0.65) { // left or right ear, high probability only 
         stroke(255, 0, 0);
         // calclulate average x between nose and eye
         let earX = 0, earY = 0;
@@ -95,12 +150,27 @@ function drawKeypoints()  {
          //pose.keypoints[1].position.x
          let x1 = keypoint.position.x
          let y1 = keypoint.position.y
-         let x2 = (earX + pose.keypoints[0].position.x) / 2
-         let y2 = (earY + pose.keypoints[0].position.y) / 2
+         //let x2 = (earX + pose.keypoints[0].position.x) / 2
+         //let y2 = (earY + pose.keypoints[0].position.y) / 2
+         let x2 = ( earX) 
+         let y2 = ( earY) 
          let length = Math.sqrt(Math.pow(x1 - x2, 2) + pow(y1 - y2 , 2));
          let newX = x2 + (x2 - x1) / length * 400;
          let newY = y2 + (y2 - y1) / length * 400;
+         skeleton_x.push(newX);
+         skeleton_y.push(newY);
+
+         // smoothing function 
+         smooth();
+
+         newX = skeleton_x.pop();
+         newY = skeleton_y.pop();
+
         line(keypoint.position.x, keypoint.position.y, newX, newY);
+
+        skeleton_x.push(newX);
+        skeleton_y.push(newY);
+
       }
       if (keypoint.score > 0.2) {
         noStroke();
@@ -129,6 +199,30 @@ function drawKeypoints()  {
 // }
 
 
+function smooth() {
+
+  let x1 = skeleton_x.pop()
+  let x2 = skeleton_x.pop()
+  let x3 = skeleton_x.pop()
+
+  let y1 = skeleton_y.pop()
+  let y2 = skeleton_y.pop()
+  let y3 = skeleton_y.pop()
+
+  x1 = (x1 + 4 * x2 + 8 * x3) / 13;
+  y1 = (y1 + 4 * y2 + 8 * y3) / 13;
+
+  skeleton_x.push(x3)
+  skeleton_x.push(x2)
+  skeleton_x.push(x1)
+
+  skeleton_y.push(y3)
+  skeleton_y.push(y2)
+  skeleton_y.push(y1)
+
+
+}
+
 // This function is called when the video loads
 function vidLoad() {
   video.stop();
@@ -137,21 +231,21 @@ function vidLoad() {
 }
 
 function drawGraph(){
-  var trace = {
-    x: skeleton1_x,
-    y: skeleton1_y,
-  mode: 'lines',
-  name: 'Lines'
-};
-var data = [ trace ];
+//   var trace = {
+//     x: skeleton1_x,
+//     y: skeleton1_y,
+//   mode: 'lines',
+//   name: 'Lines'
+// };
+// var data = [ trace ];
 
-var layout = {
-  title:'X, Y'
-};
+// var layout = {
+//   title:'X, Y'
+// };
 
-Plotly.newPlot('plot', data, layout);
+// Plotly.newPlot('plot', data, layout);
 
-console.log(skeleton1_y)
+// console.log(skeleton1_y)
 }
 
 function keyPressed(){
@@ -164,3 +258,6 @@ function keyPressed(){
     videoIsPlaying = true;
   }
 }
+
+
+
