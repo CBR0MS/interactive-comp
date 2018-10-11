@@ -7,9 +7,10 @@ let left = [];
 let right = [];
 let points = [];
 let initialAlpha = 25;
-let FOVheight = 100;
+let FOVheight = 150;
 let time;
 let show = true;
+let debug = true;
 
 class FOVedge {
 
@@ -23,7 +24,7 @@ class FOVedge {
   draw(r, g, b, a){
     stroke(r, g, b, a);
     //fill(204, 101, 192, 0);
-    //line(this.x1, this.y1, this.x2, this.y2);
+    line(this.x1, this.y1, this.x2, this.y2);
     //triangle(this.x1, this.y1, this.x2, this.y2 + 100, this.x2, this.y2 - 100);
   }
 
@@ -89,7 +90,7 @@ function setup() {
   videoIsPlaying = false; 
   createCanvas(1280, 720, P2D);
   //createCanvas(1920, 1080);
-  video = createVideo('fugazi.mp4', vidLoad);
+  video = createVideo('kill.mp4', vidLoad);
   video.size(width, height);
   
   // Create a new poseNet method with a single detection
@@ -101,6 +102,7 @@ function setup() {
   });
   // Hide the video element, and just show the canvas
   video.hide();
+
 }
 
 function modelReady() {
@@ -134,11 +136,11 @@ function drawKeypoints()  {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
     
-      if ((j == 3 || j == 4) && keypoint.score > 0.5) { // left or right ear
+      if ((j == 3 || j == 4) && keypoint.score > 0.7) { // left or right ear
         //stroke(255, 0, 0);
         // calclulate average x between nose and eye
         let earX = 0, earY = 0;
-        if (pose.keypoints[2].score > 0.5){
+        if (pose.keypoints[2].score > 0.7){
           earX = pose.keypoints[2].position.x;
           earY = pose.keypoints[2].position.y;
         } else {
@@ -163,7 +165,7 @@ function drawKeypoints()  {
 
           if (lastR != undefined){
             let ints = look.checkForIntersections(lastR)
-            if (ints.length >= 3) {
+            if (ints.length >= 3 && show) {
               points.push(ints);
             }
             right.push(lastR);
@@ -173,7 +175,7 @@ function drawKeypoints()  {
           let lastL = left.pop();
           if (lastL != undefined) {
             let ints = look.checkForIntersections(lastL)
-            if (ints.length >= 3) {
+            if (ints.length >= 3 && show) {
               points.push(ints);
             }
             left.push(lastL);
@@ -192,7 +194,7 @@ function drawKeypoints()  {
         endShape(CLOSE)
       }
       for (let i = 0; i < left.length; i++) {
-        left[i].draw();
+        if (debug){left[i].draw();}
         left[i].fade();
         if (!left[i].show) {
           left.splice(i, 1);
@@ -200,7 +202,7 @@ function drawKeypoints()  {
         
       }
       for (let i = 0; i < right.length; i++) {
-        right[i].draw();
+        if (debug){right[i].draw();}
         right[i].fade();
         if (!right[i].show) {
           right.splice(i, 1);
@@ -220,7 +222,7 @@ function vidLoad() {
 
   setTimeout(function(){ 
     show = false;
-    video.stop();
+    video.volume(0);
     video.hide();
    }, time * 1000);
 }
