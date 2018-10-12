@@ -1,16 +1,12 @@
-let poseNet;
-let poses = [];
-
-let video;
-var videoIsPlaying; 
-let left = [];
-let right = [];
-let points = [];
-let initialAlpha = 25;
-let FOVheight = 150;
+let poseNet, poses = [];
+let video, videoIsPlaying; 
+let left = [], right = [], points = [];
+let initialAlpha = 100, FOVheight = 150;
 let time;
-let show = true;
-let debug = true;
+let show = true, debug = true;
+
+let vidName = 'bully';
+let rgb = '#513005';
 
 class FOVedge {
 
@@ -20,14 +16,10 @@ class FOVedge {
     this.y1 = _y1;
     this.y2 = _y2;
   }
-
   draw(r, g, b, a){
     stroke(r, g, b, a);
-    //fill(204, 101, 192, 0);
     line(this.x1, this.y1, this.x2, this.y2);
-    //triangle(this.x1, this.y1, this.x2, this.y2 + 100, this.x2, this.y2 - 100);
   }
-
   intersects(l2) {
     let denom = ((l2.y2 - l2.y1) * (this.x2 - this.x1) - (l2.x2 - l2.x1) * (this.y2 - this.y1));
     let ua = ((l2.x2 - l2.x1) * (this.y1 - l2.y1) - (l2.y2 - l2.y1) * (this.x1 - l2.x1)) / denom;
@@ -53,7 +45,6 @@ class FOV {
       this.direction = -1
     }
   }
-
   checkForIntersections(fov) {
     let intersections = [];
     for (let j = 1; j < 3; j++){
@@ -71,14 +62,12 @@ class FOV {
     }
     return intersections;
   }
-
   fade(){
     this.col.levels[3] = this.col.levels[3] - 3;
     if (this.col.levels[3] < 0) {
       this.show = false;
     }
   } 
-
   draw() {
     this.s1.draw(this.col.levels[0], this.col.levels[1], this.col.levels[2], this.col.levels[3]);
     this.s2.draw(this.col.levels[0], this.col.levels[1], this.col.levels[2], this.col.levels[3]);
@@ -90,19 +79,13 @@ function setup() {
   videoIsPlaying = false; 
   createCanvas(1280, 720, P2D);
   //createCanvas(1920, 1080);
-  video = createVideo('kill.mp4', vidLoad);
+  video = createVideo( vidName + '.mp4', vidLoad);
   video.size(width, height);
-  
-  // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
-  // This sets up an event that fills the global variable "poses"
-  // with an array every time new poses are detected
   poseNet.on('pose', function(results) {
     poses = results;
   });
-  // Hide the video element, and just show the canvas
   video.hide();
-
 }
 
 function modelReady() {
@@ -120,24 +103,17 @@ function draw() {
     background(214, 214, 214);
   }
   
-  // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
- // drawSkeleton();
 }
-// poses[0].pose.keypoints['nose']
-// A function to draw ellipses over the detected keypoints
+
 function drawKeypoints()  {
-  //console.log()
-  // Loop through all the poses detected
+
   for (let i = 0; i < poses.length; i++) {
-    // For each pose detected, loop through all the keypoints
+
     let pose = poses[i].pose;
     for (let j = 0; j < 5; j++) {
-      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
-    
       if ((j == 3 || j == 4) && keypoint.score > 0.7) { // left or right ear
-        //stroke(255, 0, 0);
         // calclulate average x between nose and eye
         let earX = 0, earY = 0;
         if (pose.keypoints[2].score > 0.7){
@@ -147,7 +123,6 @@ function drawKeypoints()  {
           earX = pose.keypoints[1].position.x;
           earY = pose.keypoints[1].position.y;
         }
-         //pose.keypoints[1].position.x
          let x1 = keypoint.position.x
          let y1 = keypoint.position.y
          let x2 = earX;
@@ -162,7 +137,6 @@ function drawKeypoints()  {
 
          if (look.direction == -1) {
           let lastR = right.pop();
-
           if (lastR != undefined){
             let ints = look.checkForIntersections(lastR)
             if (ints.length >= 3 && show) {
@@ -184,8 +158,11 @@ function drawKeypoints()  {
           right.push(look)
          }
       }
-      fill(0, 0, 100, 2);
+      let col = color(rgb);
+      col.levels[3] = 2;
+      fill(col.levels[0], col.levels[1], col.levels[2], col.levels[3]);
       noStroke();
+      if (!debug){
       for (let i = 0; i < points.length; i++) {
         beginShape();
         for (let j = 0; j < points[i].length; j++) {
@@ -193,13 +170,13 @@ function drawKeypoints()  {
         }
         endShape(CLOSE)
       }
+    }
       for (let i = 0; i < left.length; i++) {
         if (debug){left[i].draw();}
         left[i].fade();
         if (!left[i].show) {
           left.splice(i, 1);
         }
-        
       }
       for (let i = 0; i < right.length; i++) {
         if (debug){right[i].draw();}
@@ -207,34 +184,30 @@ function drawKeypoints()  {
         if (!right[i].show) {
           right.splice(i, 1);
         }
-        
       }
     }
   }
 }
 
-// This function is called when the video loads
 function vidLoad() {
   time = video.duration();
   video.stop();
   video.loop();
   videoIsPlaying = true;
-
+  if (!debug) {
   setTimeout(function(){ 
     show = false;
     video.volume(0);
     video.hide();
    }, time * 1000);
 }
+}
 function keyPressed(){
   if (videoIsPlaying) {
-
     video.pause();
-
     videoIsPlaying = false;
   } else {
     video.loop();
     videoIsPlaying = true;
   }
 }
-
