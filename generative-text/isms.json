@@ -1,358 +1,1418 @@
 [
-  "Enlightened absolutism",
-  "Moral absolutism",
-  "Political absolutism",
-  "Absurdism",
-  "Accidentalism",
-  "Acosmism",
-  "Aestheticism",
-  "Agnosticism",
-  "Agnostic atheism",
-  "Agnostic theism",
-  "Strong agnosticism",
-  "Weak agnosticism",
-  "Altruism",
-  "Anarchism",
-  "Anarcho-primitivism",
-  "Anarcho-syndicalism",
-  "Animism",
-  "Anthropocentrism",
-  "Anthropomorphism",
-  "Antinomianism",
-  "Anti-realism",
-  "Aristotelianism",
-  "Neo-Aristotelianism",
-  "Arminianism",
-  "Asceticism",
-  "Ascriptivism",
-  "Associationalism",
-  "Atheism",
-  "Agnostic atheism",
-  "Strong atheism",
-  "Weak atheism",
-  "Atomism",
-  "Social atomism",
-  "Logical atomism",
-  "Authoritarianism",
-  "Automatism",
-  "Behavioralism",
-  "Behaviorism",
-  "Methodological behaviorism",
-  "Radical behaviorism",
-  "Logical behaviorism",
-  "Teleological behaviorism",
-  "Interbehaviorism",
-  "Psychological behaviorism",
-  "Biologism",
-  "Buddhism",
-  "Capitalism",
-  "Anarcho-capitalism",
-  "Careerism",
-  "Cartesianism",
-  "Christianism",
-  "Classicism",
-  "Cognitivism",
-  "Coherentism",
-  "Colbertism",
-  "Collectivism",
-  "Communalism",
-  "Communism",
-  "Communitarianism",
-  "Compatibilism",
-  "Comtism",
-  "Conceptualism",
-  "Confucianism",
-  "Neo-Confucianism",
-  "New Confucianism",
-  "Consequentialism",
-  "Constructivism",
-  "Consumerism",
-  "Contextualism",
-  "Conventionalism",
-  "Cosmotheism",
-  "Creationism",
-  "Day-age creationism",
-  "Evolutionary creationism",
-  "Gap creationism",
-  "Old Earth creationism",
-  "Young Earth creationism",
-  "Omphalos creationism",
-  "Cynicism",
-  "Darwinism",
-  "Deconstructionism",
-  "Deductivism",
-  "Defeatism",
-  "Deism",
-  "Pandeism",
-  "Deontologism",
-  "Descriptivism",
-  "Determinism",
-  "Historical determinism",
-  "Dialetheism",
-  "Disjunctivism",
-  "Distributism",
-  "Dogmatism",
-  "Dualism",
-  "Substance dualism",
-  "Dynamism",
-  "Eclecticism",
-  "Egalitarianism",
-  "Egoism",
-  "Ethical egoism",
-  "Emanationism",
-  "Emotionalism",
-  "Emotivism",
-  "Empiricism",
-  "Environmentalism",
-  "Epicureanism",
-  "Epiphenomenalism",
-  "Equalitarianism",
-  "Essentialism",
-  "Eternalism",
-  "Ethnocentrism",
-  "Eudaimonism",
-  "Existentialism",
-  "Christian existentialism",
-  "Experientialism",
-  "Experimentalism",
-  "Expressionism",
-  "Expressivism",
-  "Externalism",
-  "Externism",
-  "Extropianism",
-  "Fallibilism",
-  "Falsificationism",
-  "Fascism",
-  "Feminism",
-  "Fatalism",
-  "Fideism",
-  "Finalism",
-  "Formalism",
-  "Foundationalism",
-  "Freudianism",
-  "Functionalism",
-  "Gnosticism",
-  "Hedonism",
-  "Hegelianism",
-  "Henotheism",
-  "Hereditarianism",
-  "Hinduism",
-  "Historicism",
-  "Holism",
-  "Humanism",
-  "Posthumanism",
-  "Secular humanism",
-  "Transhumanism",
-  "Democratic transhumanism",
-  "Religious humanism",
-  "Christian humanism",
-  "Christian existential humanism",
-  "Humanistic naturalism",
-  "Hylozoism",
-  "Idealism",
-  "Objective idealism",
-  "German idealism",
-  "Subjective idealism",
-  "Transcendental idealism",
-  "Ignosticism",
-  "Illusionism",
-  "Immaterialism",
-  "Immoralism",
-  "Immortalism",
-  "Incompatibilism",
-  "Indeterminism",
-  "Individualism",
-  "Inductionism",
-  "Inductivism",
-  "Infinitism",
-  "Innatism",
-  "Instrumentalism",
-  "Intellectualism",
-  "Internalism",
-  "Intentionalism",
-  "Interactionism",
-  "Interpretivism",
-  "Legal interpretivism",
-  "Intrinsicism",
-  "Intuitionism",
-  "Irrationalism",
-  "Irrealism",
-  "Islamism",
-  "Jainism",
-  "Jansenism",
-  "Judaism",
-  "Kantianism",
-  "Kathenotheism",
-  "Kierkegaardianism",
-  "Legalism",
-  "Legal interpretivism",
-  "Legal naturalism",
-  "Legal positivism",
-  "Liberalism",
-  "Libertarianism",
-  "Logical positivism",
-  "Logicism",
-  "Manichaeism",
-  "Marxism",
-  "Neo-Marxism",
-  "Materialism",
-  "Christian materialism",
-  "Dialectical materialism",
-  "Historical materialism",
-  "Eliminative materialism",
-  "Emergent materialism",
-  "French materialism",
-  "Reductive materialism",
-  "Mazdaism",
-  "Mechanism",
-  "Meliorism",
-  "Mentalism",
-  "Metaphysical naturalism",
-  "Modernism",
-  "Mohism",
-  "Molinism",
-  "Monism",
-  "Monistic theism",
-  "Monolatrism",
-  "Monotheism",
-  "Moral absolutism",
-  "Moral realism",
-  "Moral relativism",
-  "Moral universalism",
-  "Mysticism",
-  "Nativism",
-  "Naturalism",
-  "Humanistic naturalism",
-  "Legal naturalism",
-  "Metaphysical naturalism",
-  "Methodological naturalism",
-  "Necessitarianism",
-  "Nihilism",
-  "Nominalism",
-  "Non-cognitivism",
-  "Nontheism",
-  "Objectivism",
-  "Occasionalism",
-  "Ontologism",
-  "Operationalism",
-  "Optimism",
-  "Organicism",
-  "Pacifism",
-  "Pandeism",
-  "Panentheism",
-  "Panpsychism",
-  "Pantheism",
-  "Particularism",
-  "Pelagianism",
-  "Semipelagianism",
-  "Perfectionism",
-  "Personalism",
-  "Perspectivism",
-  "Pessimism",
-  "Phenomenal conservatism",
-  "Phenomenalism",
-  "Physicalism",
-  "Platonism",
-  "Neo-Platonism",
-  "Pluralism",
-  "Polylogism",
-  "Polytheism",
-  "Positivism",
-  "Legal positivism",
-  "Postmodernism",
-  "Pragmatism",
-  "Prescriptivism",
-  "Probabilism",
-  "Psychological egoism",
-  "Psychologism",
-  "Pyrrhonism",
-  "Pythagoreanism",
-  "Quasi-realism",
-  "Randianism",
-  "Rationalism",
-  "Critical rationalism",
-  "Pancritical rationalism",
-  "Realism",
-  "Critical realism",
-  "Modal realism",
-  "Moral realism",
-  "Naïve realism",
-  "Platonic realism",
-  "Reconstructivism",
-  "Reductionism",
-  "Ontological reductionism",
-  "Methodological reductionism",
-  "Scientific reductionism",
-  "Greedy reductionism",
-  "Relationalism",
-  "Relativism",
-  "Moral relativism",
-  "Linguistic relativism",
-  "Methodological relativism",
-  "Reliabilism",
-  "Representationalism",
-  "Romanticism",
-  "Scholasticism",
-  "Scientism",
-  "Scotism",
-  "Secularism",
-  "Sikhism",
-  "Sensualism",
-  "Singularitarianism",
-  "Situationalism",
-  "Skepticism",
-  "Pyrrhonian skepticism",
-  "Social Darwinism",
-  "Hereditarianism",
-  "Socialism",
-  "Solipsism",
-  "Sophism",
-  "Speciesism",
-  "Spiritualism",
-  "Statism",
-  "Stoicism",
-  "Structuralism",
-  "Post-structuralism",
-  "Subjectivism",
-  "Substance monotheism",
-  "Substance dualism",
-  "Substantialism",
-  "Surrealism",
-  "Symbolism",
-  "Syncretism",
-  "Taoism",
-  "Teleologism",
-  "Theism",
-  "Monotheism",
-  "Classical theism",
-  "Deism",
-  "Monistic theism",
-  "Pantheism",
-  "Pandeism",
-  "Panentheism",
-  "Substance monotheism",
-  "Transtheism",
-  "Nontheism",
-  "Polytheism",
-  "Henotheism",
-  "Open theism",
-  "Philosophical theism",
-  "Theological noncognitivism",
-  "Thomism",
-  "Totalitarianism",
-  "Transcendental idealism",
-  "Transcendentalism",
-  "Transhumanism",
-  "Transtheism",
-  "Universalism",
-  "Utilitarianism",
-  "Utopianism",
-  "Value pluralism",
-  "Verificationism",
-  "Vitalism",
-  "Voluntarism",
-  "Voluntaryism",
-  "Youthism",
-  "Zen Buddhism",
-  "Zoroastrianism"
+  {
+    "cont": "Enlightened absolutism",
+    "url": "Enlightened_absolutism"
+  },
+  {
+    "cont": "Moral absolutism",
+    "url": "Moral_absolutism"
+  },
+  {
+    "cont": "Political absolutism",
+    "url": "Political_absolutism"
+  },
+  {
+    "cont": "Absurdism",
+    "url": "Absurdism"
+  },
+  {
+    "cont": "Accidentalism",
+    "url": "Tychism"
+  },
+  {
+    "cont": "Acosmism",
+    "url": "Acosmism"
+  },
+  {
+    "cont": "Aestheticism",
+    "url": "Aestheticism"
+  },
+  {
+    "cont": "Agnosticism",
+    "url": "Agnosticism"
+  },
+  {
+    "cont": "Agnostic atheism",
+    "url": "Agnostic_atheism"
+  },
+  {
+    "cont": "Agnostic theism",
+    "url": "Agnostic_theism"
+  },
+  {
+    "cont": "Strong agnosticism",
+    "url": "Strong_agnosticism"
+  },
+  {
+    "cont": "Weak agnosticism",
+    "url": "Weak_agnosticism"
+  },
+  {
+    "cont": "Altruism",
+    "url": "Altruism"
+  },
+  {
+    "cont": "Anarchism",
+    "url": "Anarchism"
+  },
+  {
+    "cont": "Anarcho-primitivism",
+    "url": "Anarcho-primitivism"
+  },
+  {
+    "cont": "Anarcho-syndicalism",
+    "url": "Anarcho-syndicalism"
+  },
+  {
+    "cont": "Animism",
+    "url": "Animism"
+  },
+  {
+    "cont": "Anthropocentrism",
+    "url": "Anthropocentrism"
+  },
+  {
+    "cont": "Anthropomorphism",
+    "url": "Anthropomorphism"
+  },
+  {
+    "cont": "Antinomianism",
+    "url": "Antinomianism"
+  },
+  {
+    "cont": "Anti-realism",
+    "url": "Anti-realism"
+  },
+  {
+    "cont": "Aristotelianism",
+    "url": "Aristotelianism"
+  },
+  {
+    "cont": "Neo-Aristotelianism",
+    "url": "Neo-Aristotelianism"
+  },
+  {
+    "cont": "Arminianism",
+    "url": "Arminianism"
+  },
+  {
+    "cont": "Asceticism",
+    "url": "Asceticism"
+  },
+  {
+    "cont": "Ascriptivism",
+    "url": "Ascriptivism"
+  },
+  {
+    "cont": "Associationalism",
+    "url": "Associationalism"
+  },
+  {
+    "cont": "Atheism",
+    "url": "Atheism"
+  },
+  {
+    "cont": "Agnostic atheism",
+    "url": "Agnostic_atheism"
+  },
+  {
+    "cont": "Strong atheism",
+    "url": "Strong_atheism"
+  },
+  {
+    "cont": "Weak atheism",
+    "url": "Weak_atheism"
+  },
+  {
+    "cont": "Atomism",
+    "url": "Atomism"
+  },
+  {
+    "cont": "Social atomism",
+    "url": "Atomism_(social)"
+  },
+  {
+    "cont": "Logical atomism",
+    "url": "Atomism_(logical)"
+  },
+  {
+    "cont": "Authoritarianism",
+    "url": "Authoritarianism"
+  },
+  {
+    "cont": "Automatism",
+    "url": "Surrealist_automatism"
+  },
+  {
+    "cont": "Behavioralism",
+    "url": "Behavioralism"
+  },
+  {
+    "cont": "Behaviorism",
+    "url": "Behaviorism"
+  },
+  {
+    "cont": "Methodological behaviorism",
+    "url": "Methodological_behaviorism"
+  },
+  {
+    "cont": "Radical behaviorism",
+    "url": "Radical_behaviorism"
+  },
+  {
+    "cont": "Logical behaviorism",
+    "url": "Logical_behaviorism"
+  },
+  {
+    "cont": "Teleological behaviorism",
+    "url": "Teleological_behaviorism"
+  },
+  {
+    "cont": "Interbehaviorism",
+    "url": "Interbehaviorism"
+  },
+  {
+    "cont": "Psychological behaviorism",
+    "url": "Psychological_behaviorism"
+  },
+  {
+    "cont": "Biologism",
+    "url": "Biologism"
+  },
+  {
+    "cont": "Buddhism",
+    "url": "Buddhism"
+  },
+  {
+    "cont": "Capitalism",
+    "url": "Capitalism"
+  },
+  {
+    "cont": "Anarcho-capitalism",
+    "url": "Anarcho-capitalism"
+  },
+  {
+    "cont": "Careerism",
+    "url": "Careerism"
+  },
+  {
+    "cont": "Cartesianism",
+    "url": "Cartesianism"
+  },
+  {
+    "cont": "Classicism",
+    "url": "Classicism"
+  },
+  {
+    "cont": "Cognitivism",
+    "url": "Cognitivism_(ethics)"
+  },
+  {
+    "cont": "Coherentism",
+    "url": "Coherentism"
+  },
+  {
+    "cont": "Colbertism",
+    "url": "Colbertism"
+  },
+  {
+    "cont": "Collectivism",
+    "url": "Collectivism"
+  },
+  {
+    "cont": "Communalism",
+    "url": "Communalism"
+  },
+  {
+    "cont": "Communism",
+    "url": "Communism"
+  },
+  {
+    "cont": "Communitarianism",
+    "url": "Communitarianism"
+  },
+  {
+    "cont": "Compatibilism",
+    "url": "Compatibilism_and_incompatibilism"
+  },
+  {
+    "cont": "Comtism",
+    "url": "Comtism"
+  },
+  {
+    "cont": "Conceptualism",
+    "url": "Conceptualism"
+  },
+  {
+    "cont": "Confucianism",
+    "url": "Confucianism"
+  },
+  {
+    "cont": "Neo-Confucianism",
+    "url": "Neo-Confucianism"
+  },
+  {
+    "cont": "New Confucianism",
+    "url": "New_Confucianism"
+  },
+  {
+    "cont": "Consequentialism",
+    "url": "Consequentialism"
+  },
+  {
+    "cont": "Constructivism",
+    "url": "Constructivist_epistemology"
+  },
+  {
+    "cont": "Consumerism",
+    "url": "Consumerism"
+  },
+  {
+    "cont": "Contextualism",
+    "url": "Contextualism"
+  },
+  {
+    "cont": "Conventionalism",
+    "url": "Conventionalism"
+  },
+  {
+    "cont": "Cosmotheism",
+    "url": "Pantheism"
+  },
+  {
+    "cont": "Creationism",
+    "url": "Creationism"
+  },
+  {
+    "cont": "Day-age creationism",
+    "url": "Day-age_creationism"
+  },
+  {
+    "cont": "Evolutionary creationism",
+    "url": "Evolutionary_creationism"
+  },
+  {
+    "cont": "Gap creationism",
+    "url": "Gap_creationism"
+  },
+  {
+    "cont": "Old Earth creationism",
+    "url": "Old_Earth_creationism"
+  },
+  {
+    "cont": "Young Earth creationism",
+    "url": "Young_Earth_creationism"
+  },
+  {
+    "cont": "Omphalos creationism",
+    "url": "Omphalos_creationism"
+  },
+  {
+    "cont": "Cynicism",
+    "url": "Cynicism_(philosophy)"
+  },
+  {
+    "cont": "Darwinism",
+    "url": "Darwinism"
+  },
+  {
+    "cont": "Deconstructionism",
+    "url": "Deconstruction"
+  },
+  {
+    "cont": "Deductivism",
+    "url": "Deductivism"
+  },
+  {
+    "cont": "Defeatism",
+    "url": "Defeatism"
+  },
+  {
+    "cont": "Deism",
+    "url": "Deism"
+  },
+  {
+    "cont": "Pandeism",
+    "url": "Pandeism"
+  },
+  {
+    "cont": "Deontologism",
+    "url": "Deontologism"
+  },
+  {
+    "cont": "Determinism",
+    "url": "Determinism"
+  },
+  {
+    "cont": "Historical determinism",
+    "url": "Historical_determinism"
+  },
+  {
+    "cont": "Dialetheism",
+    "url": "Dialetheism"
+  },
+  {
+    "cont": "Disjunctivism",
+    "url": "Disjunctivism"
+  },
+  {
+    "cont": "Distributism",
+    "url": "Distributism"
+  },
+  {
+    "cont": "Dogmatism",
+    "url": "Dogmatism"
+  },
+  {
+    "cont": "Dualism",
+    "url": "Mind-body_dualism"
+  },
+  {
+    "cont": "Substance dualism",
+    "url": "Substance_dualism"
+  },
+  {
+    "cont": "Dynamism",
+    "url": "Dynamism_(metaphysics)"
+  },
+  {
+    "cont": "Eclecticism",
+    "url": "Eclecticism"
+  },
+  {
+    "cont": "Egalitarianism",
+    "url": "Egalitarianism"
+  },
+  {
+    "cont": "Egoism",
+    "url": "https://en.wiktionary.orgEgoism"
+  },
+  {
+    "cont": "Ethical egoism",
+    "url": "Ethical_egoism"
+  },
+  {
+    "cont": "Emanationism",
+    "url": "Emanationism"
+  },
+  {
+    "cont": "Emotionalism",
+    "url": "Appearance_emotionalism"
+  },
+  {
+    "cont": "Emotivism",
+    "url": "Emotivism"
+  },
+  {
+    "cont": "Empiricism",
+    "url": "Empiricism"
+  },
+  {
+    "cont": "Environmentalism",
+    "url": "Environmentalism"
+  },
+  {
+    "cont": "Epicureanism",
+    "url": "Epicureanism"
+  },
+  {
+    "cont": "Epiphenomenalism",
+    "url": "Epiphenomenalism"
+  },
+  {
+    "cont": "Equalitarianism",
+    "url": "Equalitarianism"
+  },
+  {
+    "cont": "Essentialism",
+    "url": "Essentialism"
+  },
+  {
+    "cont": "Eternalism",
+    "url": "Eternalism_(philosophy_of_time)"
+  },
+  {
+    "cont": "Ethnocentrism",
+    "url": "Ethnocentrism"
+  },
+  {
+    "cont": "Eudaimonism",
+    "url": "Eudaimonism"
+  },
+  {
+    "cont": "Existentialism",
+    "url": "Existentialism"
+  },
+  {
+    "cont": "Christian existentialism",
+    "url": "Christian_existentialism"
+  },
+  {
+    "cont": "Experientialism",
+    "url": "Experientialism"
+  },
+  {
+    "cont": "Experimentalism",
+    "url": "Empiricism"
+  },
+  {
+    "cont": "Expressionism",
+    "url": "Expressionism"
+  },
+  {
+    "cont": "Expressivism",
+    "url": "Expressivism"
+  },
+  {
+    "cont": "Externalism",
+    "url": "Externalism"
+  },
+  {
+    "cont": "Externism",
+    "url": "Externism"
+  },
+  {
+    "cont": "Extropianism",
+    "url": "Extropianism"
+  },
+  {
+    "cont": "Fallibilism",
+    "url": "Fallibilism"
+  },
+  {
+    "cont": "Falsificationism",
+    "url": "Falsificationism"
+  },
+  {
+    "cont": "Fascism",
+    "url": "Fascism"
+  },
+  {
+    "cont": "Feminism",
+    "url": "Feminism"
+  },
+  {
+    "cont": "Fatalism",
+    "url": "Fatalism"
+  },
+  {
+    "cont": "Fideism",
+    "url": "Fideism"
+  },
+  {
+    "cont": "Finalism",
+    "url": "Finalism"
+  },
+  {
+    "cont": "Formalism",
+    "url": "Formalism_(philosophy)"
+  },
+  {
+    "cont": "Foundationalism",
+    "url": "Foundationalism"
+  },
+  {
+    "cont": "Freudianism",
+    "url": "Freudianism"
+  },
+  {
+    "cont": "Functionalism",
+    "url": "Functionalism_(philosophy_of_mind)"
+  },
+  {
+    "cont": "Gnosticism",
+    "url": "Gnosticism"
+  },
+  {
+    "cont": "Hedonism",
+    "url": "Hedonism"
+  },
+  {
+    "cont": "Hegelianism",
+    "url": "Hegelianism"
+  },
+  {
+    "cont": "Henotheism",
+    "url": "Henotheism"
+  },
+  {
+    "cont": "Hereditarianism",
+    "url": "Hereditarianism"
+  },
+  {
+    "cont": "Hinduism",
+    "url": "Hinduism"
+  },
+  {
+    "cont": "Historicism",
+    "url": "Historicism"
+  },
+  {
+    "cont": "Holism",
+    "url": "Holism"
+  },
+  {
+    "cont": "Humanism",
+    "url": "Humanism"
+  },
+  {
+    "cont": "Posthumanism",
+    "url": "Posthumanism"
+  },
+  {
+    "cont": "Secular humanism",
+    "url": "Secular_humanism"
+  },
+  {
+    "cont": "Transhumanism",
+    "url": "Transhumanism"
+  },
+  {
+    "cont": "Democratic transhumanism",
+    "url": "Democratic_transhumanism"
+  },
+  {
+    "cont": "Religious humanism",
+    "url": "Religious_humanism"
+  },
+  {
+    "cont": "Christian humanism",
+    "url": "Christian_humanism"
+  },
+  {
+    "cont": "Christian existential humanism",
+    "url": "Christian_existential_humanism"
+  },
+  {
+    "cont": "Humanistic naturalism",
+    "url": "Humanistic_naturalism"
+  },
+  {
+    "cont": "Hylozoism",
+    "url": "Hylozoism"
+  },
+  {
+    "cont": "Idealism",
+    "url": "Idealism"
+  },
+  {
+    "cont": "Objective idealism",
+    "url": "Objective_idealism"
+  },
+  {
+    "cont": "German idealism",
+    "url": "German_idealism"
+  },
+  {
+    "cont": "Subjective idealism",
+    "url": "Subjective_idealism"
+  },
+  {
+    "cont": "Transcendental idealism",
+    "url": "Transcendental_idealism"
+  },
+  {
+    "cont": "Ignosticism",
+    "url": "Ignosticism"
+  },
+  {
+    "cont": "Illusionism",
+    "url": "Illusionism_(philosophy)"
+  },
+  {
+    "cont": "Immaterialism",
+    "url": "Immaterialism"
+  },
+  {
+    "cont": "Immoralism",
+    "url": "Immoralism"
+  },
+  {
+    "cont": "Immortalism",
+    "url": "Immortalism"
+  },
+  {
+    "cont": "Incompatibilism",
+    "url": "Compatibilism_and_incompatibilism"
+  },
+  {
+    "cont": "Indeterminism",
+    "url": "Indeterminism"
+  },
+  {
+    "cont": "Individualism",
+    "url": "Individualism"
+  },
+  {
+    "cont": "Inductionism",
+    "url": "Inductionism"
+  },
+  {
+    "cont": "Inductivism",
+    "url": "Inductivism"
+  },
+  {
+    "cont": "Infinitism",
+    "url": "Infinitism"
+  },
+  {
+    "cont": "Innatism",
+    "url": "Innatism"
+  },
+  {
+    "cont": "Instrumentalism",
+    "url": "Instrumentalism"
+  },
+  {
+    "cont": "Intellectualism",
+    "url": "Intellectualism"
+  },
+  {
+    "cont": "Internalism",
+    "url": "Internalism"
+  },
+  {
+    "cont": "Intentionalism",
+    "url": "Intentionalism"
+  },
+  {
+    "cont": "Interactionism",
+    "url": "Interactionism"
+  },
+  {
+    "cont": "Interpretivism",
+    "url": "Antipositivism"
+  },
+  {
+    "cont": "Legal interpretivism",
+    "url": "Interpretivism_(legal)"
+  },
+  {
+    "cont": "Intrinsicism",
+    "url": "Intrinsicism"
+  },
+  {
+    "cont": "Intuitionism",
+    "url": "Intuitionism"
+  },
+  {
+    "cont": "Irrationalism",
+    "url": "Irrationalism"
+  },
+  {
+    "cont": "Irrealism",
+    "url": "Irrealism_(philosophy)"
+  },
+  {
+    "cont": "Islamism",
+    "url": "Islamism"
+  },
+  {
+    "cont": "Jainism",
+    "url": "Jainism"
+  },
+  {
+    "cont": "Jansenism",
+    "url": "Jansenism"
+  },
+  {
+    "cont": "Judaism",
+    "url": "Judaism"
+  },
+  {
+    "cont": "Kantianism",
+    "url": "Kantianism"
+  },
+  {
+    "cont": "Kathenotheism",
+    "url": "Kathenotheism"
+  },
+  {
+    "cont": "Kierkegaardianism",
+    "url": "Philosophy_of_S%C3%B8ren_Kierkegaard"
+  },
+  {
+    "cont": "Legalism",
+    "url": "Legalism_(Western_philosophy)"
+  },
+  {
+    "cont": "Legal interpretivism",
+    "url": "Interpretivism_(legal)"
+  },
+  {
+    "cont": "Legal naturalism",
+    "url": "Legal_naturalism"
+  },
+  {
+    "cont": "Legal positivism",
+    "url": "Legal_positivism"
+  },
+  {
+    "cont": "Liberalism",
+    "url": "Liberalism"
+  },
+  {
+    "cont": "Libertarianism",
+    "url": "Libertarianism"
+  },
+  {
+    "cont": "Logical positivism",
+    "url": "Logical_positivism"
+  },
+  {
+    "cont": "Logicism",
+    "url": "Logicism"
+  },
+  {
+    "cont": "Manichaeism",
+    "url": "Manichaeism"
+  },
+  {
+    "cont": "Marxism",
+    "url": "Marxism"
+  },
+  {
+    "cont": "Neo-Marxism",
+    "url": "Neo-Marxism"
+  },
+  {
+    "cont": "Materialism",
+    "url": "Materialism"
+  },
+  {
+    "cont": "Christian materialism",
+    "url": "Christian_materialism"
+  },
+  {
+    "cont": "Dialectical materialism",
+    "url": "Dialectical_materialism"
+  },
+  {
+    "cont": "Historical materialism",
+    "url": "Historical_materialism"
+  },
+  {
+    "cont": "Eliminative materialism",
+    "url": "Eliminative_materialism"
+  },
+  {
+    "cont": "Emergent materialism",
+    "url": "Emergent_materialism"
+  },
+  {
+    "cont": "French materialism",
+    "url": "French_materialism"
+  },
+  {
+    "cont": "Reductive materialism",
+    "url": "Reductive_materialism"
+  },
+  {
+    "cont": "Mazdaism",
+    "url": "Mazdaism"
+  },
+  {
+    "cont": "Mechanism",
+    "url": "Mechanism_(philosophy)"
+  },
+  {
+    "cont": "Meliorism",
+    "url": "Meliorism"
+  },
+  {
+    "cont": "Mentalism",
+    "url": "Mentalism_(philosophy)"
+  },
+  {
+    "cont": "Metaphysical naturalism",
+    "url": "Metaphysical_naturalism"
+  },
+  {
+    "cont": "Modernism",
+    "url": "Modernism"
+  },
+  {
+    "cont": "Mohism",
+    "url": "Mohism"
+  },
+  {
+    "cont": "Molinism",
+    "url": "Molinism"
+  },
+  {
+    "cont": "Monism",
+    "url": "Monism"
+  },
+  {
+    "cont": "Monistic theism",
+    "url": "Monistic_theism"
+  },
+  {
+    "cont": "Monolatrism",
+    "url": "Monolatrism"
+  },
+  {
+    "cont": "Monotheism",
+    "url": "Monotheism"
+  },
+  {
+    "cont": "Moral absolutism",
+    "url": "Moral_absolutism"
+  },
+  {
+    "cont": "Moral realism",
+    "url": "Moral_realism"
+  },
+  {
+    "cont": "Moral relativism",
+    "url": "Moral_relativism"
+  },
+  {
+    "cont": "Moral universalism",
+    "url": "Moral_universalism"
+  },
+  {
+    "cont": "Mysticism",
+    "url": "Mysticism"
+  },
+  {
+    "cont": "Nativism",
+    "url": "Nativism_(politics)"
+  },
+  {
+    "cont": "Naturalism",
+    "url": "Naturalism_(philosophy)"
+  },
+  {
+    "cont": "Humanistic naturalism",
+    "url": "Humanistic_naturalism"
+  },
+  {
+    "cont": "Legal naturalism",
+    "url": "Legal_naturalism"
+  },
+  {
+    "cont": "Metaphysical naturalism",
+    "url": "Metaphysical_naturalism"
+  },
+  {
+    "cont": "Methodological naturalism",
+    "url": "Methodological_naturalism"
+  },
+  {
+    "cont": "Necessitarianism",
+    "url": "Necessitarianism"
+  },
+  {
+    "cont": "Nihilism",
+    "url": "Nihilism"
+  },
+  {
+    "cont": "Nominalism",
+    "url": "Nominalism"
+  },
+  {
+    "cont": "Non-cognitivism",
+    "url": "Non-cognitivism"
+  },
+  {
+    "cont": "Nontheism",
+    "url": "Nontheism"
+  },
+  {
+    "cont": "Objectivism",
+    "url": "Objectivism_(Ayn_Rand)"
+  },
+  {
+    "cont": "Occasionalism",
+    "url": "Occasionalism"
+  },
+  {
+    "cont": "Ontologism",
+    "url": "Ontologism"
+  },
+  {
+    "cont": "Operationalism",
+    "url": "Operationalism"
+  },
+  {
+    "cont": "Optimism",
+    "url": "Optimism"
+  },
+  {
+    "cont": "Organicism",
+    "url": "Organicism"
+  },
+  {
+    "cont": "Pacifism",
+    "url": "Pacifism"
+  },
+  {
+    "cont": "Pandeism",
+    "url": "Pandeism"
+  },
+  {
+    "cont": "Panentheism",
+    "url": "Panentheism"
+  },
+  {
+    "cont": "Panpsychism",
+    "url": "Panpsychism"
+  },
+  {
+    "cont": "Pantheism",
+    "url": "Pantheism"
+  },
+  {
+    "cont": "Particularism",
+    "url": "Epistemological_particularism"
+  },
+  {
+    "cont": "Pelagianism",
+    "url": "Pelagianism"
+  },
+  {
+    "cont": "Semipelagianism",
+    "url": "Semipelagianism"
+  },
+  {
+    "cont": "Perfectionism",
+    "url": "Perfectionism_(philosophy)"
+  },
+  {
+    "cont": "Personalism",
+    "url": "Personalism"
+  },
+  {
+    "cont": "Perspectivism",
+    "url": "Perspectivism"
+  },
+  {
+    "cont": "Pessimism",
+    "url": "Pessimism"
+  },
+  {
+    "cont": "Phenomenal conservatism",
+    "url": "Phenomenal_conservatism"
+  },
+  {
+    "cont": "Phenomenalism",
+    "url": "Phenomenalism"
+  },
+  {
+    "cont": "Physicalism",
+    "url": "Physicalism"
+  },
+  {
+    "cont": "Platonism",
+    "url": "Platonism"
+  },
+  {
+    "cont": "Neo-Platonism",
+    "url": "Neo-Platonism"
+  },
+  {
+    "cont": "Pluralism",
+    "url": "Pluralism_in_philosophy"
+  },
+  {
+    "cont": "Polylogism",
+    "url": "Polylogism"
+  },
+  {
+    "cont": "Polytheism",
+    "url": "Polytheism"
+  },
+  {
+    "cont": "Positivism",
+    "url": "Positivism"
+  },
+  {
+    "cont": "Legal positivism",
+    "url": "Legal_positivism"
+  },
+  {
+    "cont": "Postmodernism",
+    "url": "Postmodern_philosophy"
+  },
+  {
+    "cont": "Pragmatism",
+    "url": "Pragmatism"
+  },
+  {
+    "cont": "Prescriptivism",
+    "url": "Prescriptivism_(philosophy)"
+  },
+  {
+    "cont": "Probabilism",
+    "url": "Probabilism"
+  },
+  {
+    "cont": "Psychological egoism",
+    "url": "Psychological_egoism"
+  },
+  {
+    "cont": "Psychologism",
+    "url": "Psychologism"
+  },
+  {
+    "cont": "Pyrrhonism",
+    "url": "Pyrrhonism"
+  },
+  {
+    "cont": "Pythagoreanism",
+    "url": "Pythagoreanism"
+  },
+  {
+    "cont": "Quasi-realism",
+    "url": "Quasi-realism"
+  },
+  {
+    "cont": "Randianism",
+    "url": "Randianism"
+  },
+  {
+    "cont": "Rationalism",
+    "url": "Rationalism"
+  },
+  {
+    "cont": "Critical rationalism",
+    "url": "Critical_rationalism"
+  },
+  {
+    "cont": "Pancritical rationalism",
+    "url": "Pancritical_rationalism"
+  },
+  {
+    "cont": "Realism",
+    "url": "Philosophical_realism"
+  },
+  {
+    "cont": "Critical realism",
+    "url": "Critical_realism_(philosophy_of_perception)"
+  },
+  {
+    "cont": "Modal realism",
+    "url": "Modal_realism"
+  },
+  {
+    "cont": "Moral realism",
+    "url": "Moral_realism"
+  },
+  {
+    "cont": "Naïve realism",
+    "url": "Na%C3%AFve_realism"
+  },
+  {
+    "cont": "Platonic realism",
+    "url": "Platonic_realism"
+  },
+  {
+    "cont": "Reconstructivism",
+    "url": "Reconstructivism"
+  },
+  {
+    "cont": "Reductionism",
+    "url": "Reductionism"
+  },
+  {
+    "cont": "Ontological reductionism",
+    "url": "Ontological_reductionism"
+  },
+  {
+    "cont": "Methodological reductionism",
+    "url": "Occam%27s_Razor"
+  },
+  {
+    "cont": "Scientific reductionism",
+    "url": "Scientific_reductionism"
+  },
+  {
+    "cont": "Greedy reductionism",
+    "url": "Greedy_reductionism"
+  },
+  {
+    "cont": "Relationalism",
+    "url": "Relationalism"
+  },
+  {
+    "cont": "Relativism",
+    "url": "Relativism"
+  },
+  {
+    "cont": "Moral relativism",
+    "url": "Moral_relativism"
+  },
+  {
+    "cont": "Linguistic relativism",
+    "url": "Linguistic_relativism"
+  },
+  {
+    "cont": "Methodological relativism",
+    "url": "Methodological_relativism"
+  },
+  {
+    "cont": "Reliabilism",
+    "url": "Reliabilism"
+  },
+  {
+    "cont": "Representationalism",
+    "url": "Representationalism"
+  },
+  {
+    "cont": "Romanticism",
+    "url": "Romanticism"
+  },
+  {
+    "cont": "Scholasticism",
+    "url": "Scholasticism"
+  },
+  {
+    "cont": "Scientism",
+    "url": "Scientism"
+  },
+  {
+    "cont": "Scotism",
+    "url": "Scotism"
+  },
+  {
+    "cont": "Secularism",
+    "url": "Secularism"
+  },
+  {
+    "cont": "Sikhism",
+    "url": "Sikh"
+  },
+  {
+    "cont": "Sensualism",
+    "url": "Sensualism"
+  },
+  {
+    "cont": "Singularitarianism",
+    "url": "Singularitarianism"
+  },
+  {
+    "cont": "Situationalism",
+    "url": "Situational_ethics"
+  },
+  {
+    "cont": "Skepticism",
+    "url": "Philosophical_skepticism"
+  },
+  {
+    "cont": "Pyrrhonian skepticism",
+    "url": "Pyrrhonian_skepticism"
+  },
+  {
+    "cont": "Social Darwinism",
+    "url": "Social_Darwinism"
+  },
+  {
+    "cont": "Hereditarianism",
+    "url": "Hereditarianism"
+  },
+  {
+    "cont": "Socialism",
+    "url": "Socialism"
+  },
+  {
+    "cont": "Solipsism",
+    "url": "Solipsism"
+  },
+  {
+    "cont": "Sophism",
+    "url": "Sophism"
+  },
+  {
+    "cont": "Speciesism",
+    "url": "Speciesism"
+  },
+  {
+    "cont": "Spiritualism",
+    "url": "Spiritualism_(religious_movement)"
+  },
+  {
+    "cont": "Statism",
+    "url": "Statism"
+  },
+  {
+    "cont": "Stoicism",
+    "url": "Stoicism"
+  },
+  {
+    "cont": "Structuralism",
+    "url": "Structuralism"
+  },
+  {
+    "cont": "Post-structuralism",
+    "url": "Post-structuralism"
+  },
+  {
+    "cont": "Subjectivism",
+    "url": "Subjectivism"
+  },
+  {
+    "cont": "Substance monotheism",
+    "url": "Substance_monotheism"
+  },
+  {
+    "cont": "Substance dualism",
+    "url": "Substance_dualism"
+  },
+  {
+    "cont": "Substantialism",
+    "url": "Substantialism"
+  },
+  {
+    "cont": "Surrealism",
+    "url": "Surrealism"
+  },
+  {
+    "cont": "Symbolism",
+    "url": "Symbol"
+  },
+  {
+    "cont": "Syncretism",
+    "url": "Syncretism"
+  },
+  {
+    "cont": "Taoism",
+    "url": "Taoism"
+  },
+  {
+    "cont": "Teleologism",
+    "url": "Teleologism"
+  },
+  {
+    "cont": "Theism",
+    "url": "Theism"
+  },
+  {
+    "cont": "Monotheism",
+    "url": "Monotheism"
+  },
+  {
+    "cont": "Classical theism",
+    "url": "Classical_theism"
+  },
+  {
+    "cont": "Deism",
+    "url": "Deism"
+  },
+  {
+    "cont": "Monistic theism",
+    "url": "Monistic_theism"
+  },
+  {
+    "cont": "Pantheism",
+    "url": "Pantheism"
+  },
+  {
+    "cont": "Pandeism",
+    "url": "Pandeism"
+  },
+  {
+    "cont": "Panentheism",
+    "url": "Panentheism"
+  },
+  {
+    "cont": "Substance monotheism",
+    "url": "Substance_monotheism"
+  },
+  {
+    "cont": "Transtheism",
+    "url": "Transtheism"
+  },
+  {
+    "cont": "Nontheism",
+    "url": "Nontheism"
+  },
+  {
+    "cont": "Polytheism",
+    "url": "Polytheism"
+  },
+  {
+    "cont": "Henotheism",
+    "url": "Henotheism"
+  },
+  {
+    "cont": "Open theism",
+    "url": "Open_theism"
+  },
+  {
+    "cont": "Philosophical theism",
+    "url": "Philosophical_theism"
+  },
+  {
+    "cont": "Theological noncognitivism",
+    "url": "Theological_noncognitivism"
+  },
+  {
+    "cont": "Thomism",
+    "url": "Thomism"
+  },
+  {
+    "cont": "Totalitarianism",
+    "url": "Totalitarianism"
+  },
+  {
+    "cont": "Transcendental idealism",
+    "url": "Transcendental_idealism"
+  },
+  {
+    "cont": "Transcendentalism",
+    "url": "Transcendentalism"
+  },
+  {
+    "cont": "Transhumanism",
+    "url": "Transhumanism"
+  },
+  {
+    "cont": "Transtheism",
+    "url": "Transtheism"
+  },
+  {
+    "cont": "Universalism",
+    "url": "Moral_universalism"
+  },
+  {
+    "cont": "Utilitarianism",
+    "url": "Utilitarianism"
+  },
+  {
+    "cont": "Utopianism",
+    "url": "Utopianism"
+  },
+  {
+    "cont": "Value pluralism",
+    "url": "Value_pluralism"
+  },
+  {
+    "cont": "Verificationism",
+    "url": "Verificationism"
+  },
+  {
+    "cont": "Vitalism",
+    "url": "Vitalism"
+  },
+  {
+    "cont": "Voluntarism",
+    "url": "Voluntarism_(metaphysics)"
+  },
+  {
+    "cont": "Voluntaryism",
+    "url": "Voluntaryism"
+  },
+  {
+    "cont": "Youthism",
+    "url": "Youthism"
+  },
+  {
+    "cont": "Zen Buddhism",
+    "url": "Zen_Buddhism"
+  },
+  {
+    "cont": "Zoroastrianism",
+    "url": "Zoroastrianism"
+  }
 ]

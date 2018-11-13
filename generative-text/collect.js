@@ -18,7 +18,6 @@ function preload() {
         element.innerHTML = data.parse.text["*"]
         let dfns = element.getElementsByTagName('dfn');
         let all = [];
-        let allUrl = []
 
         for (let i = 0; i< dfns.length; i++) {
             let aContent = dfns[i].getElementsByTagName('a');
@@ -27,14 +26,12 @@ function preload() {
                 let url = aContent[0].getAttribute("href")
                 url = url.replace(/(\/wiki\/)/g, "")
                 content = content.replace(/\[[0-9][0-9]?\]/g, "");
-                all.push(content)
-                allUrl.push(url)
+                all.push({'cont': content, 'url': url})
             }
             
         }
         console.log(all)
         saveJSON(all, 'isms.json');
-        saveJSON(allUrl, 'ismsUrls.json');
     }
 }
 
