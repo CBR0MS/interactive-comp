@@ -22,9 +22,9 @@ function preload () {
         let element = document.createElement("div")
         element.innerHTML = data.parse.text["*"]
         // get all sup elements 
-        let supTags = element.getElementsByTagName("sup")
-        // remove sup elements 
-        while (supTags[0]) supTags[0].parentNode.removeChild(supTags[0])
+        // let supTags = element.getElementsByTagName("sup")
+        // // remove sup elements 
+        // while (supTags[0]) supTags[0].parentNode.removeChild(supTags[0])
         // get all p elements 
         let contents = element.getElementsByClassName("mw-parser-output")[0].childNodes
         let text = "";
@@ -32,6 +32,9 @@ function preload () {
             if (contents[i].tagName == 'P') {
                 let cont = contents[i].innerText
                 if (!(/^\s*$/g.test(cont))){
+                    cont = cont.replace("\n", " ")
+                    cont = cont.replace(/\.(\[[\w\s\d]*\])+(\w)*/g, ".")
+                    cont = cont.replace(/(\[[\w\s\d]*\])+/g, "")
                     text = text + " " + cont
                 }
             } else if (contents[i].id == 'toc') {
@@ -137,6 +140,7 @@ function preload () {
 function setup(){
 
     //console.log(sourceTexts);
+    let jsonToSave = []
 
     for (let i = 0; i < sourceTexts.length; i++){
         let data1 = sourceTexts[i].first.content
@@ -156,47 +160,52 @@ function setup(){
         let data1Split = data1.split(". ")[0]
         let data2Split = data2.split(". ")[0]
         let data2More = data2.split(". ")[1]
+        if (data2More == undefined) {data2More = ""}
         let data1More = data1.split(". ")[1]
+        if (data1More == undefined) {data1More = ""}
 
-        //let first = data1Split.substr(0, data1Split.indexOf('is')); 
-        let first = data1Split.substr(data1Split.indexOf(' is ')+1);
-        let second = data2Split.substr(data2Split.indexOf(' is ')+4);
-
-        first = first.replace(title1a, newTitle)
-        first = first.replace(title1b, newTitle)
-
-        data1More = data1More.replace(title1a, newTitle)
+        let first = ""
+        if (data1Split.indexOf(' is ') != -1){
+            first = data1Split.substr(data1Split.indexOf(' is ')+1);
+        } else if (data1Split.indexOf(' was ') != -1) {
+            first = data1Split.substr(data1Split.indexOf(' was ')+1);
+        }
+        let second = ""
+        if (data2Split.indexOf(' is ') != -1){
+            second = data2Split.substr(data2Split.indexOf(' is ')+4);
+        } else if (data2Split.indexOf(' was ') != -1) {
+            second = data2Split.substr(data2Split.indexOf(' was ')+5);
+        }
+ 
         data1More = data1More.replace(title1b, newTitle)
-
-        second = second.replace(title2a, newTitle)
         second = second.replace(title2b, newTitle)
-
-        data2More = data2More.replace(title2a, newTitle)
+        first = first.replace(title1b, newTitle)
         data2More = data2More.replace(title2b, newTitle)
 
-        let joined = " " + first + ". It is " + second + ". " + data2More + ". " + data1More + "."
+        let joined = " " + first + ". It is " + second + ". " + data2More + ". " + data1More + ". "
+        let ind = 2
+        let split1 = data1.split(". ")
+        let split2 = data2.split(". ")
+        while (joined.length < 750 && ind < split1.length && ind < split2.length) {
+            if (split1[ind] != undefined && split1[ind] != "") {
+                let rep = split1[ind].replace(title1b, newTitle)
+                joined = joined + rep + ". "
+            } else if (split2[ind] != undefined && split2[ind] != "") {
+                let rep = split2[ind].replace(title2b, newTitle)
+                joined = joined + split2[ind] + ". "
+            }
+            ind += 1
+        }
+        joined = newTitle + joined
+        console.log(joined.length)
+        jsonToSave.push({'title': newTitle, 'text': joined})
 
         let el = document.createElement("div")
-        el.innerHTML = newTitle + joined + "<br><br>"
+        el.innerHTML = joined + "<br><br>"
         document.getElementById("div1").appendChild(el);
     }
-
-    //makeMarkov(sourceTexts[0]);
-
-     function makeMarkov(data){
-        let rm = new RiMarkov(3);
-        rm.loadText(data);
-        let sentences = rm.generateSentences(12);
-        let allSentences = "";
-
-        for (let i = 0; i < sentences.length; i++){
-            allSentences = allSentences + " " + sentences[i];
-        }
-
-        let element1 = document.createElement("div")
-        element1.innerHTML = allSentences + "\n"
-        document.getElementById("div1").appendChild(element1);
-    }
+    saveJSON(jsonToSave, 'newPhilosophies.json')
+    
 }
 
 
