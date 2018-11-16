@@ -11,19 +11,12 @@ nlp = spacy.load('en_core_web_lg')
 with open('newPhilosophies.json') as f:
     data = json.load(f)
 
+revised_data = []
+
 for entry in data:
     title = entry['title']
     text = entry['text']
     doc = nlp(text)
-
-    # for token in doc:
-    #     if token.pos_ == 'NOUN': 
-    #         print(token.text)
-    #         try:
-    #             print(model.most_similar(positive=[token.text]))
-    #         except KeyError as e:
-    #             print("not found")
-    #             # something goes here
 
     people = []
 
@@ -50,4 +43,10 @@ for entry in data:
     for person, new_person in revised_people:
         text = text.replace(person, new_person)
 
-    print(text)
+    revised_data.append({'title': title, 'text': text})
+
+
+random.shuffle(revised_data)
+
+with open('newPhilosophies.json', 'w') as f:
+    json.dump(revised_data, f)

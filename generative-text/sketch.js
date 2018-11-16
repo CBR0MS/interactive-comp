@@ -5,7 +5,7 @@ let singleIsms = [], singleIsmsUrls = []
 let multipleIsms = [], multipleIsmsUrls = []
 let prefixes = []
 
-let generations = 10;
+let generations = 48;
 
 let newPhilosophies = []
 let builtFrom = []
@@ -17,15 +17,10 @@ function preload () {
     loadJSON('isms.json', loadIsms);
 
     function cleanContent(data) {
-        // get html and make new html element 
         //console.log(data)
         let element = document.createElement("div")
         element.innerHTML = data.parse.text["*"]
-        // get all sup elements 
-        // let supTags = element.getElementsByTagName("sup")
-        // // remove sup elements 
-        // while (supTags[0]) supTags[0].parentNode.removeChild(supTags[0])
-        // get all p elements 
+
         let contents = element.getElementsByClassName("mw-parser-output")[0].childNodes
         let text = "";
         for (let i = 0; i < contents.length; i++){
@@ -33,8 +28,11 @@ function preload () {
                 let cont = contents[i].innerText
                 if (!(/^\s*$/g.test(cont))){
                     cont = cont.replace("\n", " ")
-                    cont = cont.replace(/\.(\[[\w\s\d]*\])+(\w)*/g, ".")
+                    cont = cont.replace(/[.](\[[\w\s\d]*\])+[\w]*[:\d–]*/g, ".")
+                    cont = cont.replace(/[,](\[[\w\s\d]*\])+[\w]*[:\d–]*/g, ",")
                     cont = cont.replace(/(\[[\w\s\d]*\])+/g, "")
+                    cont = cont.replace(".\"", "\".")
+                    cont = cont.replace("i. e.", "i.e.")
                     text = text + " " + cont
                 }
             } else if (contents[i].id == 'toc') {
@@ -122,10 +120,10 @@ function preload () {
     function getWikiSummaries() {
         for (let i = 0; i < builtFrom.length; i++) {
             let res = loadJSON((contentUrl + builtFrom[i].firstUrl), (data) => {
-                console.log(builtFrom[i])
+                //console.log(builtFrom[i])
                 let cleaned = cleanContent(data)
                 let res = loadJSON((contentUrl + builtFrom[i].secondUrl), (data) => {
-                    console.log(builtFrom[i])
+                    //console.log(builtFrom[i])
                     let cleaned2 = cleanContent(data)
                     //console.log(cleaned + "\n" + cleaned2)
                     sourceTexts.push({'first': {'source': builtFrom[i].firstUrl, 'content': cleaned, 'name':builtFrom[i].first}, 
@@ -211,63 +209,62 @@ function setup(){
             second = data2Split.substr(data2Split.indexOf(' was ')+5);
         }
 
+        let splitTitle = newTitle.split(" ")
+        let newTitleist = splitTitle[splitTitle.length - 1].replace('ism', 'ist')
+        newTitleist = newTitle.replace(splitTitle[splitTitle.length - 1], newTitleist)
+
+        // console.log(newTitle)
+        // console.log(newTitleist)
+
         // console.log("Looking for... ")
-        // console.log(title1b + ", " + title1a + ", " +  title1b.replace('ism', 'ists') + ", " + title1a.replace('ism', 'ists'))
-        // console.log(title2b + ", " + title2a + ", " +  title2b.replace('ism', 'ists') + ", " +  title2a.replace('ism', 'ists'))
+        // console.log(title1b + ", " + title1a + ", " +  title1b.replace('ism', 'ist') + ", " + title1a.replace('ism', 'ist'))
+        // console.log(title2b + ", " + title2a + ", " +  title2b.replace('ism', 'ist') + ", " +  title2a.replace('ism', 'ist'))
 
-        first = first.replace(title1b, newTitle) // upper case 
-        first = first.replace(title1a, newTitle) // lower case 
-        first = first.replace(title1b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-        first = first.replace(title1a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
+        first = replace(first, title1b, title1a, newTitle, newTitleist)
 
-        data1More = data1More.replace(title1b, newTitle) // upper case 
-        data1More = data1More.replace(title1a, newTitle) // lower case 
-        data1More = data1More.replace(title1b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-        data1More = data1More.replace(title1a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
-
-        second = second.replace(title2b, newTitle) // upper case 
-        second = second.replace(title2a, newTitle) // lower case 
-        second = second.replace(title2b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-        second = second.replace(title2a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
-
-        data2More = data2More.replace(title2b, newTitle) // upper case 
-        data2More = data2More.replace(title2a, newTitle) // lower case 
-        data2More = data2More.replace(title2b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-        data2More = data2More.replace(title2a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
+        second = replace(second, title2b, title2a, newTitle, newTitleist)  
 
         let joined = "";
         if (first != ""){
-            joined = " " + first + ". It is " + second + ". " + data2More + ". " + data1More + ". "
-        } else{
-            joined = " is " + second + ". " + data2More + ". " + data1More + ". "
+            if (second != ""){
+                joined = " " + first + ". It is " + second + ". " 
+            } else {
+                joined = " " + first + ". " 
+            }
+            
+        } else {
+            joined = " is "
         }
+
         let ind = 2
-        let firstUsed = true
+        let firstUsed = false
         let split1 = data1.split(". ")
         let split2 = data2.split(". ")
-        while (joined.length < 750 && ind < split1.length && ind < split2.length) {
+
+        while (joined.length < 750 && (ind < split1.length || ind < split2.length)) {
+
             if (split1[ind] != undefined && split1[ind] != "" && firstUsed) {
                 let data = split1[ind]
-                data = data.replace(title1b, newTitle) // upper case 
-                data = data.replace(title1a, newTitle) // lower case 
-                data = data.replace(title1b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-                data = data.replace(title1a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
+                data = replace(data, title1b, title1a, newTitle, newTitleist)   
                 joined = joined + data + ". "
                 firstUsed = false
             } else if (split2[ind] != undefined && split2[ind] != "" && !firstUsed) {
                 let data = split2[ind]
-                data = data.replace(title2b, newTitle) // upper case 
-                data = data.replace(title2a, newTitle) // lower case 
-                data = data.replace(title2b.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // upper case -ists
-                data = data.replace(title2a.replace('ism', 'ists'), newTitle.replace('ism', 'ists')) // lower case -ists
+                data = replace(data, title2b, title2a, newTitle, newTitleist)   
                 joined = joined + data + ". "
                 firstUsed = true
+                ind += 1
+            } else {
+                firstUsed = !firstUsed
+                ind += 1
             }
-            ind += 1
+            
         }
         joined = newTitle + joined
         joined = joined.replace(/\u2013|\u2014/g, "-");
         joined = joined.replace(/[^\x00-\x7F]/g, "");
+        joined = joined.replace("\".", ".\"")
+        joined = joined.replace(". .", ".")
 
         //console.log(joined.length)
         jsonToSave.push({'title': newTitle, 'text': joined})
@@ -276,10 +273,42 @@ function setup(){
         el.innerHTML = joined + "<br><br>"
         document.getElementById("div1").appendChild(el);
     }
-    //saveJSON(jsonToSave, 'newPhilosophies.json')
+    saveJSON(jsonToSave, 'newPhilosophies.json')
     
 }
 
+function replace(data, title1, title2, newTitle, newTitleist)  {
+    // console.log("\nlooking for " + title1 + " " + title2)
+    // console.log("in " + data)
+    let f1 = data.indexOf(title1)
+    let f2 = data.indexOf(title2)
+    let f3 = data.indexOf(title1.replace('ism', 'ist'))
+    let f4 = data.indexOf(title2.replace('ism', 'ist'))
+
+    let split = data.split(" ")
+
+    for (let i = 0; i < split.length; i++) {
+        if (split[i].indexOf(title1) != -1) {
+            split[i] = split[i].replace(title1, newTitle)
+        } else if (split[i].indexOf(title2) != -1){
+            split[i] = split[i].replace(title2, newTitle)
+        } else {
+            if (split[i].indexOf(title1.replace('ism', 'ist')) != -1) {
+                split[i] = split[i].replace(title1.replace('ism', 'ist'), newTitleist)
+            } else if (split[i].indexOf(title2.replace('ism', 'ist')) != -1) {
+                split[i] = split[i].replace(title2.replace('ism', 'ist'), newTitleist)
+            }
+        }
+    }
+
+    let full = ""
+
+    for (let i = 0; i < split.length; i++){
+        full = full + " " + split[i]
+    }
+
+    return full
+}
 
 
 
