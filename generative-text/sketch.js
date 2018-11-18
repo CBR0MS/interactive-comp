@@ -5,7 +5,7 @@ let singleIsms = [], singleIsmsUrls = []
 let multipleIsms = [], multipleIsmsUrls = []
 let prefixes = []
 
-let generations = 48;
+let generations = 81;
 
 let newPhilosophies = []
 let builtFrom = []
@@ -32,7 +32,18 @@ function preload () {
                     cont = cont.replace(/[,](\[[\w\s\d]*\])+[\w]*[:\d–]*/g, ",")
                     cont = cont.replace(/(\[[\w\s\d]*\])+/g, "")
                     cont = cont.replace(".\"", "\".")
-                    cont = cont.replace("i. e.", "i.e.")
+                    cont = cont.replace("i. e. ", "")
+                    cont = cont.replace("e.g. ", "e.g.")
+                    cont = cont.replace("c. ", "c.")
+
+                    let matches = cont.match(/([A-Z]\. )+/g);
+
+                    if (matches != null) {
+                        for (let j = 0; j < matches.length; j++){
+                            let fixed = matches[j].replace(" ", "")
+                            cont = cont.replace(matches[j], fixed)
+                        }
+                    }
                     text = text + " " + cont
                 }
             } else if (contents[i].id == 'toc') {
@@ -225,8 +236,8 @@ function setup(){
         second = replace(second, title2b, title2a, newTitle, newTitleist)  
 
         let joined = "";
-        if (first != ""){
-            if (second != ""){
+        if (first.length > 0 && first != " "){
+            if (second.length > 0 && second != " "){
                 joined = " " + first + ". It is " + second + ". " 
             } else {
                 joined = " " + first + ". " 

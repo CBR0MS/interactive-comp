@@ -2,6 +2,10 @@ import json, random, re
 import spacy 
 # from gensim.test.utils import common_texts, get_tmpfile
 # from gensim.models import Word2Vec
+from difflib import SequenceMatcher
+
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
 
 data = []
 nlp = spacy.load('en_core_web_lg')
@@ -21,14 +25,20 @@ for entry in data:
     people = []
 
     for ent in doc.ents:
+        # or ent.label_ == 'GPE' or ent.label_ == 'LOC'
         if ent.label_ == 'PERSON' or ent.label_ == 'PER' or ent.label_ == 'GPE' or ent.label_ == 'LOC':
             people.append(ent.text)
 
     revised_people = []
 
+    print("\ncomparing to {}".format(title))
+
     for person in people:
 
-        if not bool(re.search(r'\d', person)):
+        sim = similar(person, title)
+
+        if (not bool(re.search(r'\d', person)) and (person not in title) and (sim < 0.4)):
+            print(person)
 
             split_name = person.split(' ')
             name = ''
